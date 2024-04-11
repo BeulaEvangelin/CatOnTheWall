@@ -6,7 +6,7 @@
 
     <!-- zimjs.com - JavaScript Canvas Framework -->
     <script type="module">
-      import zim from "https://zimjs.org/cdn/016/zim";
+      import zim from "https://zimjs.org/cdn/016/zim_physics";
 
       // See Docs under Frame for FIT, FILL, FULL, and TAG
       const assets = [
@@ -42,7 +42,10 @@
         }
 
         const bg = new Pic("bg.png").sca(0.4).center();
-        new Pic("cat1.png").sca(0.5).pos(-10, 455, CENTER, TOP).addPhysics();
+        const pirateCat = new Pic("cat1.png")
+          .sca(0.5)
+          .pos(-10, 455, CENTER, TOP)
+          .addPhysics();
         new Rectangle(200, 465, orange).pos(0, -10, CENTER, BOTTOM);
         const title = new Pic("title.png").sca(0.3).pos(0, 50, CENTER, TOP);
       } // end ready
