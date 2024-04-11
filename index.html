@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Cat on the wall</title>
+
+    <!-- zimjs.com - JavaScript Canvas Framework -->
+    <script type="module">
+      import zim from "https://zimjs.org/cdn/016/zim";
+
+      // See Docs under Frame for FIT, FILL, FULL, and TAG
+      const assets = [
+        "cat1.png",
+        "cat2.png",
+        "bg.png",
+        "title.png",
+        "RandomThought.ttf",
+      ];
+      const path = "assets/";
+      new Frame(FIT, 720, 1280, interstellar, dark, ready, assets, path);
+      function ready() {
+        const label = new Label().center();
+
+        const permissionType = "devicemotion"; // or "devicemotion"
+        const ask = new PermissionAsk(init, permissionType);
+        function init(yes) {
+          // if the user answers yes to the PermissionAsk
+          const errorPane = new Pane("SENSOR not available", yellow);
+          if (yes) {
+            // use the sensors
+            label.text =
+              decimals(e.acceleration.x) +
+              "," +
+              decimals(e.acceleration.y) +
+              "," +
+              decimals(e.acceleration.z);
+            S.update();
+          } else {
+            // answered no to PermissionAsk dialog
+            errorPane.show();
+          }
+        }
+
+        const bg = new Pic("bg.png").sca(0.4).center();
+        new Pic("cat1.png").sca(0.5).center().addPhysics();
+        new Rectangle(200, 465, orange).pos(0, -10, CENTER, BOTTOM);
+        const title = new Pic("title.png").sca(0.3).pos(0, 50, CENTER, TOP);
+      } // end ready
+    </script>
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+  </head>
+  <body></body>
+</html>
