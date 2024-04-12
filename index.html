@@ -64,14 +64,13 @@
                   "," +
                   decimals(e.rotation.z);
 
-                // cat1.force();
-                if (e.rotation.y > 50) {
+                if (e.rotation.y > 2) {
                   // Tilted to the right
-                  cat1.force(0, 400); // Apply force to the right
+                  cat1.force(400, 0);
                 }
-                if (e.rotation.y < -50) {
+                if (e.rotation.y < -2) {
                   // Tilted to the left
-                  cat1.force(0, -400); // Apply force to the left
+                  cat1.force(-400, 0);
                 } else {
                   cat1.force(0, 0);
                 }
