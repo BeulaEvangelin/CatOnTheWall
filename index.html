@@ -21,13 +21,6 @@
       const path = "assets/";
       new Frame(FIT, 720, 1280, interstellar, dark, ready, assets, path);
       function ready() {
-        const label = new Label().center();
-
-        F.on("deviceorientation", (e) => {
-          label.text = e.rotation.x + "," + e.rotation.y + "," + e.rotation.z;
-          S.update();
-        });
-
         // const permissionType = "devicemotion"; // or "devicemotion"
         // const ask = new PermissionAsk(init, permissionType);
         // function init(yes) {
@@ -52,6 +45,11 @@
         function start() {
           const bg = new Pic("bg.png").sca(0.4).center();
           const title = new Pic("title.png").sca(0.3).pos(0, 50, CENTER, TOP);
+          const label = new Label().center().mov(0, -100);
+          F.on("deviceorientation", (e) => {
+            label.text = e.rotation.x + "," + e.rotation.y + "," + e.rotation.z;
+            S.update();
+          });
           const wallAnimate = new Sprite({ json: "wall.json" })
             .sca(0.8)
             .pos(0, 100, CENTER, BOTTOM)
