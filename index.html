@@ -6,7 +6,7 @@
 
     <!-- zimjs.com - JavaScript Canvas Framework -->
     <script type="module">
-      import zim from "https://zimjs.org/cdn/016/zim";
+      import zim from "https://zimjs.org/cdn/016/zim_physics";
 
       // See Docs under Frame for FIT, FILL, FULL, and TAG
       const assets = [
@@ -59,11 +59,18 @@
           const startButton = new Pic("startButton.png")
             .sca(0.2)
             .center()
-            .tap(() => {});
+            .tap(() => {
+              startButton.removeFrom();
+              wallAnimate.removeFrom();
+              new Pic("cat1.png")
+                .sca(0.5)
+                .pos(-10, 700, CENTER, BOTTOM)
+                .addPhysics();
+              new Rectangle(200, 465, orange)
+                .pos(0, -10, CENTER, BOTTOM)
+                .addPhysics();
+            });
         }
-
-        // new Pic("cat1.png").sca(0.5).pos(-10, 450, CENTER, BOTTOM).addPhysics();
-        // new Rectangle(200, 465, orange).pos(0, -10, CENTER, BOTTOM);
       } // end ready
     </script>
     <meta name="viewport" content="width=device-width, user-scalable=no" />
