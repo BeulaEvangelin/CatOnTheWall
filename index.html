@@ -52,16 +52,16 @@
               new Rectangle(200, 465, orange)
                 .pos(0, -10, CENTER, BOTTOM)
                 .addPhysics();
-              cat1.force();
+              // cat1.force();
               if (e.rotation.y > 50) {
                 // Tilted to the right
-                cat.force(10, 0); // Apply force to the right
+                cat1.force(10, 0); // Apply force to the right
               }
               if (e.rotation.y > 50) {
                 // Tilted to the left
-                cat.force(-10, 0); // Apply force to the left
+                cat1.force(-10, 0); // Apply force to the left
               } else {
-                cat.force;
+                cat1.force(0, 0);
               }
               const label = new Label().center();
               F.on("deviceorientation", (e) => {
