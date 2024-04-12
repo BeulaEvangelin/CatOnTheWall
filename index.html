@@ -48,18 +48,21 @@
               const cat1 = new Pic("cat1.png")
                 .sca(0.5)
                 .pos(-10, 700, CENTER, BOTTOM)
-                .addPhysics();
+                .addPhysics({
+                  bounciness: 0.5,
+                  linear: 0.3,
+                });
               new Rectangle(200, 465, orange)
                 .pos(0, -10, CENTER, BOTTOM)
                 .addPhysics();
               // cat1.force();
               if (e.rotation.y > 50) {
                 // Tilted to the right
-                cat1.force(10, 0); // Apply force to the right
+                cat1.force(0, 400); // Apply force to the right
               }
-              if (e.rotation.y > 50) {
+              if (e.rotation.y < -50) {
                 // Tilted to the left
-                cat1.force(-10, 0); // Apply force to the left
+                cat1.force(0, -400); // Apply force to the left
               } else {
                 cat1.force(0, 0);
               }
