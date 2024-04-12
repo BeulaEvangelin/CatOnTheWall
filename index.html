@@ -47,6 +47,7 @@
               wallAnimate.removeFrom();
               const cat1 = new Pic("cat1.png")
                 .sca(0.5)
+                .reg(CENTER)
                 .pos(-10, 700, CENTER, BOTTOM)
                 .addPhysics({
                   bounciness: 0.5,
@@ -64,17 +65,17 @@
                   "," +
                   decimals(e.rotation.z);
 
-                if (e.rotation.y > 2) {
-                  // Tilted to the right
-                  cat1.force(400, 0);
-                }
-                if (e.rotation.y < -2) {
-                  // Tilted to the left
-                  cat1.force(-400, 0);
-                } else {
-                  cat1.force(0, 0);
-                }
-
+                // if (e.rotation.y > 2) {
+                //   // Tilted to the right
+                //   cat1.force(400, 0);
+                // }
+                // if (e.rotation.y < -2) {
+                //   // Tilted to the left
+                //   cat1.force(-400, 0);
+                // } else {
+                //   cat1.force(0, 0);
+                // }
+                cat1.force(e.rotation.y * 200);
                 S.update();
               });
             });
