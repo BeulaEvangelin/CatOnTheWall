@@ -53,23 +53,24 @@
                 .pos(0, -10, CENTER, BOTTOM)
                 .addPhysics();
               cat1.force();
+              if (e.rotation.y > 50) {
+                // Tilted to the right
+                cat.force(10, 0); // Apply force to the right
+              }
+              if (e.rotation.y > 50) {
+                // Tilted to the left
+                cat.force(-10, 0); // Apply force to the left
+              } else {
+                cat.force;
+              }
               const label = new Label().center();
-
               F.on("deviceorientation", (e) => {
-                const threshold = 30; // Adjust this threshold as needed
-                const tiltX = e.rotation.x; // Tilt along the X-axis
-                const tiltY = e.rotation.y; // Tilt along the Y-axis
-                // Apply force based on tilt direction
-                if (tiltX > 0) {
-                  // Tilted to the right
-                  cat.force(10, 0); // Apply force to the right
-                } else {
-                  // Tilted to the left
-                  cat.force(-10, 0); // Apply force to the left
-                }
-
-                // Update label with tilt values
-                label.text = decimals(tiltX) + "," + decimals(tiltY);
+                label.text =
+                  decimals(e.rotation.x) +
+                  "," +
+                  decimals(e.rotation.y) +
+                  "," +
+                  decimals(e.rotation.z);
                 S.update();
               });
             });
