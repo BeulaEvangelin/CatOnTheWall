@@ -46,29 +46,34 @@
           const bg = new Pic("bg.png").sca(0.4).center();
           const title = new Pic("title.png").sca(0.3).pos(0, 50, CENTER, TOP);
           const label = new Label().center().mov(0, -100);
-          F.on("deviceorientation", (e) => {
-            label.text = e.rotation.x + "," + e.rotation.y + "," + e.rotation.z;
+          F.on("devicemotion", (e) => {
+            label.text =
+              e.acceleration.x +
+              "," +
+              e.acceleration.y +
+              "," +
+              e.acceleration.z;
             S.update();
           });
-          const permissionType = "deviceorientation"; // or "devicemotion"
-          const ask = new PermissionAsk(init, permissionType);
-          function init(yes) {
-            // if the user answers yes to the PermissionAsk
-            const errorPane = new Pane("SENSOR not available", yellow);
-            if (yes) {
-              // use the sensors
-              label.text =
-                decimals(e.rotation.x) +
-                "," +
-                decimals(e.rotation.y) +
-                "," +
-                decimals(e.rotation.z);
-              S.update();
-            } else {
-              // answered no to PermissionAsk dialog
-              errorPane.show();
-            }
-          }
+          // const permissionType = "deviceorientation"; // or "devicemotion"
+          // const ask = new PermissionAsk(init, permissionType);
+          // function init(yes) {
+          //   // if the user answers yes to the PermissionAsk
+          //   const errorPane = new Pane("SENSOR not available", yellow);
+          //   if (yes) {
+          //     // use the sensors
+          //     label.text =
+          //       decimals(e.rotation.x) +
+          //       "," +
+          //       decimals(e.rotation.y) +
+          //       "," +
+          //       decimals(e.rotation.z);
+          //     S.update();
+          //   } else {
+          //     // answered no to PermissionAsk dialog
+          //     errorPane.show();
+          //   }
+          // }
           const wallAnimate = new Sprite({ json: "wall.json" })
             .sca(0.8)
             .pos(0, 100, CENTER, BOTTOM)
