@@ -79,8 +79,10 @@
                 // } else {
                 //   cat1.force(0, 0);
                 // }
-                cat1.force(e.rotation.x * 100);
-                cat1.torque(e.rotation.x * 100);
+                cat1.force(e.rotation.x * 200);
+                cat1.torque(e.rotation.x * 200);
+                cat1.force(e.rotation.y * 200);
+                cat1.torque(e.rotation.y * 200);
                 S.update();
               });
             });
