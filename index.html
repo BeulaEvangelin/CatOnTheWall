@@ -56,12 +56,11 @@
                   bounciness: 0.5,
                   linear: 0.3,
                 });
-              const timer = new Timer({
+              new Timer({
                 time: 60,
                 borderColor: dark,
-                isometric: LEFT, // isometric for left side of board
               }).loc(100, 100);
-              new Rectangle(130, 465, orange, black, 2)
+              new Rectangle(130, 465, orange, black)
                 .reg(CENTER)
                 .pos(0, -10, CENTER, BOTTOM)
                 .addPhysics(false);
