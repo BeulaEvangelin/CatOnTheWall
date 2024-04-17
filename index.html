@@ -56,7 +56,12 @@
                   bounciness: 0.5,
                   linear: 0.3,
                 });
-              new Rectangle(150, 465, orange, black)
+              const timer = new Timer({
+                time: 60,
+                borderColor: dark,
+                isometric: LEFT, // isometric for left side of board
+              }).loc(100, 100);
+              new Rectangle(130, 465, orange, black, 2)
                 .reg(CENTER)
                 .pos(0, -10, CENTER, BOTTOM)
                 .addPhysics(false);
@@ -82,7 +87,7 @@
                 cat1.force(e.rotation.x * 200);
                 cat1.torque(e.rotation.x * 200);
                 cat1.force(e.rotation.y * 100);
-                cat1.torque(e.rotation.y * 100);
+                // cat1.torque(e.rotation.y * 100);
                 S.update();
               });
             });
