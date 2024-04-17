@@ -49,7 +49,7 @@
               startButton.removeFrom();
               wallAnimate.removeFrom();
               const cat1 = new Pic("cat1.png")
-                .sca(0.5)
+                .sca(0.3)
                 .reg(CENTER)
                 .pos(-10, 700, CENTER, BOTTOM)
                 .addPhysics({
@@ -79,8 +79,8 @@
                 // } else {
                 //   cat1.force(0, 0);
                 // }
-                cat1.force(e.rotation.x * 100);
-                cat1.torque(e.rotation.x * 100);
+                cat1.force(e.rotation.x * 200);
+                cat1.torque(e.rotation.x * 200);
                 cat1.force(e.rotation.y * 100);
                 cat1.torque(e.rotation.y * 100);
                 S.update();
