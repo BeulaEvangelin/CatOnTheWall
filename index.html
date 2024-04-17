@@ -60,11 +60,6 @@
                 .reg(CENTER)
                 .pos(0, -10, CENTER, BOTTOM)
                 .addPhysics(false);
-              new Timer({
-                time: 60,
-                borderColor: dark,
-                isometric: LEFT, // isometric for left side of board
-              }).pos(10, 10, LEFT, TOP);
               const label = new Label().center();
               F.on("deviceorientation", (e) => {
                 label.text =
