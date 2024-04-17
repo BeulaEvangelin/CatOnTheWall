@@ -37,7 +37,7 @@
         start();
         function start() {
           const bg = new Pic("bg.png").sca(0.4).center();
-          const title = new Pic("title.png").sca(0.3).pos(0, 50, CENTER, TOP);
+          const title = new Pic("title.png").sca(0.2).pos(0, 50, CENTER, TOP);
           const wallAnimate = new Sprite({ json: "wall.json" })
             .sca(0.8)
             .pos(0, 100, CENTER, BOTTOM)
@@ -56,7 +56,7 @@
                   bounciness: 0.5,
                   linear: 0.3,
                 });
-              new Rectangle(200, 465, orange)
+              new Rectangle(150, 465, orange, black)
                 .reg(CENTER)
                 .pos(0, -10, CENTER, BOTTOM)
                 .addPhysics(false);
