@@ -55,7 +55,8 @@
                 .addPhysics({
                   bounciness: 0.5,
                   angular: 5,
-                  density: 3,
+                  density: 1.5,
+                  friction: 0.5,
                 })
                 .drag();
               new Rectangle(110, 465, orange, black, 2)
@@ -71,16 +72,6 @@
                   "," +
                   decimals(e.rotation.z);
 
-                // if (e.rotation.y > 2) {
-                //   // Tilted to the right
-                //   cat1.force(400, 0);
-                // }
-                // if (e.rotation.y < -2) {
-                //   // Tilted to the left
-                //   cat1.force(-400, 0);
-                // } else {
-                //   cat1.force(0, 0);
-                // }
                 // Apply forces based on device orientation
                 const forceX = e.rotation.y * 3; // Apply force based on rotation along the Y-axis
                 const forceY = e.rotation.x * 3; // Apply force based on rotation along the X-axis
