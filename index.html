@@ -79,6 +79,14 @@
                 const forceZ = e.rotation.z * 3; // Apply force based on rotation along the Z-axis
 
                 cat1.force(forceX, forceY, forceZ); // Apply combined forces along X, Y, and Z axes
+
+                let catRotation = cat1.rot(0);
+                let catRotationL = cat1.rot(-45);
+                let catRotationR = cat1.rot(45);
+                if (catRotationL || catRotationR) {
+                  catRotation;
+                }
+
                 S.update();
               });
             });
