@@ -81,11 +81,10 @@
                 //   cat1.force(0, 0);
                 // }
                 // Apply forces based on device orientation
-                const forceX = e.rotation.y * 5; // Apply force based on rotation along the Y-axis
-                const forceY = e.rotation.x * 5; // Apply force based on rotation along the X-axis
-                const forceZ = e.rotation.z * 5; // Apply force based on rotation along the Z-axis
+                const forceX = e.rotation.y * 3; // Apply force based on rotation along the Y-axis
+                const forceY = e.rotation.x * 3; // Apply force based on rotation along the X-axis
 
-                cat1.force(forceX, forceY, forceZ); // Apply combined forces along X, Y, and Z axes
+                cat1.force(forceX, forceY); // Apply combined forces along X, Y, and Z axes
                 S.update();
               });
             });
