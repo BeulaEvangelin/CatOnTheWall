@@ -65,8 +65,8 @@
                 Levels: ["Easy", "Medium", "Hard"],
               };
               const list = new List({
-                width: 300,
-                height: 500,
+                width: 200,
+                height: 400,
                 list: { menu: data, bloom: true, whither: true },
                 pulldown: true,
                 pulldownToggle: true,
@@ -90,7 +90,7 @@
                 const forceZ = e.rotation.z * 3; // Apply force based on rotation along the Z-axis
 
                 cat1.force(forceX, forceY, forceZ); // Apply combined forces along X, Y, and Z axes
-
+                cat1.torque(forceX, forceY, forceZ);
                 // let catRotation = cat1.rot({ rotation: 0 });
                 // let catRotationL = cat1.rot({ rotation: -45 });
                 // let catRotationR = cat1.rot({ rotation: 45 });
