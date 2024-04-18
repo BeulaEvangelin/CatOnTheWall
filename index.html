@@ -34,7 +34,10 @@
         assets,
         path,
       });
+
       function ready() {
+        let level = 0;
+        const forces = [20, 300, 40];
         start();
         function start() {
           const gameContainer = new Container(720, 1280).center();
@@ -87,7 +90,7 @@
                   density: 1.5,
                 });
 
-              new Rectangle(20, 465, orange, black, 2)
+              new Rectangle(30, 465, red, black, 2)
                 .reg(CENTER)
                 .pos(0, -10, CENTER, BOTTOM, gameContainer)
                 .addPhysics(false);
@@ -117,6 +120,7 @@
                 .pos(30, 30, LEFT, TOP, gameContainer)
                 .change(() => {
                   zog(list.selectedIndex);
+                  level = list.selectedIndex - 1;
                 });
 
               const label = new Label().center(gameContainer);
@@ -128,8 +132,8 @@
                   "," +
                   decimals(e.rotation.z);
 
-                const forceX = e.rotation.y * 20;
-                const forceY = e.rotation.x * 20;
+                const forceX = e.rotation.y * forces[level];
+                const forceY = e.rotation.x * forces[level];
 
                 cat1.force(forceX, forceY);
 
@@ -139,19 +143,32 @@
                     cat1.dispose();
                   }
                 });
-                // cat1.torque(forceX, forceY, forceZ);
 
-                // let catRotation = cat1.rot({ rotation: 0 });
-                // let catRotationL = cat1.rot({ rotation: -45 });
-                // let catRotationR = cat1.rot({ rotation: 45 });
-                // if (catRotationL || catRotationR) {
-                //   catRotation;
-                // }
+                const cat2 = new Pic("cat1.png")
+                  .sca(0.9)
+                  .reg(CENTER)
+                  .pos(0, 650, CENTER, BOTTOM, gameContainer)
+                  .addPhysics({
+                    bounciness: 0,
+                    angular: 1,
+                    density: 1.5,
+                  });
 
-                // if (cat1.hitTestBounds(gameContainer)) {
-                //   new Aud("angyMeow.wav").play();
-                //   cat1.removeFrom(gameContainer);
-                // }
+                new Rectangle(20, 465, orange, black, 2)
+                  .reg(CENTER)
+                  .pos(0, -10, CENTER, BOTTOM, gameContainer)
+                  .addPhysics(false);
+                const forceX2 = e.rotation.y * 20;
+                const forceY2 = e.rotation.x * 20;
+
+                cat1.force(forceX2, forceY2);
+
+                cat1.contact((obj) => {
+                  if (obj.type == "Border") {
+                    new Aud("angyMeow.wav").play();
+                    cat1.dispose();
+                  }
+                });
 
                 S.update();
               });
