@@ -61,10 +61,13 @@
                   angular: 5,
                   density: 1.5,
                 });
+              const data = {
+                Levels: ["Easy", "Medium", "Hard"],
+              };
               const list = new List({
-                width: 30,
-                height: 50,
-                list: ["Easy", "Medium", "Hard"],
+                width: 300,
+                height: 500,
+                list: { menu: data, bloom: true, whither: true },
                 pulldown: true,
                 pulldownToggle: true,
               }).pos(10, 10, LEFT, TOP, gameContainer);
