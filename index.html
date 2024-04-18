@@ -50,7 +50,7 @@
               startButton.removeFrom();
               wallAnimate.removeFrom();
               const cat1 = new Pic("cat1-1.png")
-                .sca(0.3)
+                .sca(0.1)
                 .reg(CENTER)
                 .pos(-10, 650, CENTER, BOTTOM)
                 .addPhysics({
@@ -74,18 +74,18 @@
                   decimals(e.rotation.z);
 
                 // Apply forces based on device orientation
-                const forceX = e.rotation.y * 5; // Apply force based on rotation along the Y-axis
-                const forceY = e.rotation.x * 5; // Apply force based on rotation along the X-axis
-                const forceZ = e.rotation.z * 5; // Apply force based on rotation along the Z-axis
+                const forceX = e.rotation.y * 3; // Apply force based on rotation along the Y-axis
+                const forceY = e.rotation.x * 3; // Apply force based on rotation along the X-axis
+                const forceZ = e.rotation.z * 3; // Apply force based on rotation along the Z-axis
 
                 cat1.force(forceX, forceY, forceZ); // Apply combined forces along X, Y, and Z axes
 
-                // let catRotation = cat1.rot(0);
-                // let catRotationL = cat1.rot(-45);
-                // let catRotationR = cat1.rot(45);
-                // if (catRotationL || catRotationR) {
-                //   catRotation;
-                // }
+                let catRotation = cat1.rot(0);
+                let catRotationL = cat1.rot(-45);
+                let catRotationR = cat1.rot(45);
+                if (catRotationL || catRotationR) {
+                  catRotation;
+                }
 
                 S.update();
               });
