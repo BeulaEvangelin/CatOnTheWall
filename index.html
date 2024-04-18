@@ -71,13 +71,14 @@
             .sca(0.2)
             .center(gameContainer)
             .tap(() => {
-              startButton.removeFrom(gameContainer);
-              wallAnimate.removeFrom(gameContainer);
-              instructions.removeFrom(gameContainer);
-              introAnim1.removeFrom(gameContainer);
+              startButton.removeFrom();
+              wallAnimate.removeFrom();
+              instructions.removeFrom();
+              introAnim1.removeFrom();
+              title.removeFrom();
 
               const cat1 = new Pic("cat1.png")
-                .sca(0.5)
+                .sca(0.7)
                 .reg(CENTER)
                 .pos(0, 650, CENTER, BOTTOM, gameContainer)
                 .addPhysics({
@@ -86,7 +87,6 @@
                   density: 1.5,
                 });
 
-              STYLE = { backdropColor: green };
               const data = {
                 Levels: [
                   new Tile(
@@ -107,8 +107,10 @@
                 list: { menu: data, bloom: true, whither: true },
                 pulldown: true,
                 pulldownToggle: true,
+                backgroundColor: green,
+                rollBackgroundColor: yellow,
               })
-                .pos(10, 10, LEFT, TOP, gameContainer)
+                .pos(30, 30, LEFT, TOP, gameContainer)
                 .change(() => {
                   zog(list.selectedIndex);
                 });
