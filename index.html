@@ -99,10 +99,10 @@
                 //   catRotation;
                 // }
 
-                // if (cat1.hitTestBounds(gameContainer)) {
-                //   new Aud("angyMeow.wav").play();
-                //   cat1.removeFrom(gameContainer);
-                // }
+                if (cat1.hitTestBounds(gameContainer)) {
+                  new Aud("angyMeow.wav").play();
+                  cat1.removeFrom(gameContainer);
+                }
 
                 S.update();
               });
