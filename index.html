@@ -46,12 +46,19 @@
             .sca(0.8)
             .pos(0, 100, CENTER, BOTTOM, gameContainer)
             .run(6);
+          const instructions = new Label({
+            text: "TiLt To BaLaNcE",
+            size: 25,
+            font: "RandomThought",
+            color: "black",
+          }).pos(0, 200, CENTER, BOTTOM, gameContainer);
           const startButton = new Pic("startButton.png")
             .sca(0.2)
             .center(gameContainer)
             .tap(() => {
               startButton.removeFrom(gameContainer);
               wallAnimate.removeFrom(gameContainer);
+              instructions.removeFrom(gameContainer);
               const cat1 = new Pic("cat1.png")
                 .sca(0.5)
                 .reg(CENTER)
