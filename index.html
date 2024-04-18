@@ -80,7 +80,7 @@
                 .reg(CENTER)
                 .pos(0, 650, CENTER, BOTTOM, gameContainer)
                 .addPhysics({
-                  bounciness: 0.5,
+                  bounciness: 0,
                   angular: 5,
                   density: 1.5,
                 });
@@ -111,11 +111,10 @@
                   decimals(e.rotation.z);
 
                 // Apply forces based on device orientation
-                const forceX = e.rotation.x * 3;
-                const forceY = e.rotation.y * 3;
-                const forceZ = e.rotation.z * 3;
+                const forceX = e.rotation.y * 3;
+                const forceY = e.rotation.x * 3;
 
-                cat1.force(forceX, forceY, forceZ);
+                cat1.force(forceX, forceY);
 
                 cat1.contact((obj) => {
                   if (obj.type == "Border") {
