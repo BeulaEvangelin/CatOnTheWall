@@ -80,9 +80,9 @@
 
                 cat1.force(forceX, forceY, forceZ); // Apply combined forces along X, Y, and Z axes
 
-                let catRotation = cat1.rot(0);
-                let catRotationL = cat1.rot(-45);
-                let catRotationR = cat1.rot(45);
+                let catRotation = cat1.rot({ rotation: 0 });
+                let catRotationL = cat1.rot({ rotation: -45 });
+                let catRotationR = cat1.rot({ rotation: 45 });
                 if (catRotationL || catRotationR) {
                   catRotation;
                 }
