@@ -39,19 +39,23 @@
         function start() {
           const gameContainer = new Container(720, 1280).center();
           const bg = new Pic("bg.png").sca(0.4).center(gameContainer);
+
           const title = new Pic("title.png")
             .sca(0.2)
             .pos(0, 50, CENTER, TOP, gameContainer);
+
           const wallAnimate = new Sprite({ json: "wall.json" })
             .sca(0.8)
             .pos(0, 100, CENTER, BOTTOM, gameContainer)
             .run(6);
+
           const instructions = new Label({
             text: "TiLt To BaLaNcE",
-            size: 25,
+            size: 36,
             font: "RandomThought",
             color: "black",
-          }).pos(0, 200, CENTER, BOTTOM, gameContainer);
+          }).pos(0, 300, CENTER, TOP, gameContainer);
+
           const startButton = new Pic("startButton.png")
             .sca(0.2)
             .center(gameContainer)
@@ -59,6 +63,7 @@
               startButton.removeFrom(gameContainer);
               wallAnimate.removeFrom(gameContainer);
               instructions.removeFrom(gameContainer);
+
               const cat1 = new Pic("cat1.png")
                 .sca(0.5)
                 .reg(CENTER)
@@ -68,6 +73,7 @@
                   angular: 5,
                   density: 1.5,
                 });
+
               const data = {
                 Levels: ["Easy", "Medium", "Hard"],
               };
@@ -78,10 +84,12 @@
                 pulldown: true,
                 pulldownToggle: true,
               }).pos(10, 10, LEFT, TOP, gameContainer);
+
               new Rectangle(70, 465, orange, black, 2)
                 .reg(CENTER)
                 .pos(0, -10, CENTER, BOTTOM, gameContainer)
                 .addPhysics(false);
+
               const label = new Label().center(gameContainer);
               F.on("deviceorientation", (e) => {
                 label.text =
