@@ -81,10 +81,13 @@
                 //   cat1.force(0, 0);
                 // }
                 cat1.force(e.rotation.x * 30);
+                cat1.force(-e.rotation.x * 30);
                 // cat1.torque(e.rotation.x * 200);
                 cat1.force(e.rotation.y * 30);
+                cat1.force(-e.rotation.y * 30);
                 // cat1.torque(e.rotation.y * 100);
                 cat1.force(e.rotation.z * 30);
+                cat1.force(-e.rotation.z * 30);
                 S.update();
               });
             });
