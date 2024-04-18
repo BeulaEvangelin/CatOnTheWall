@@ -50,14 +50,13 @@
               startButton.removeFrom();
               wallAnimate.removeFrom();
               const cat1 = new Pic("cat1-1.png")
-                .sca(0.4)
+                .sca(0.5)
                 .reg(CENTER)
-                .pos(-10, 650, CENTER, BOTTOM)
+                .pos(0, 650, CENTER, BOTTOM)
                 .addPhysics({
                   bounciness: 0.5,
                   angular: 5,
                   density: 1.5,
-                  friction: 0.1,
                 })
                 .drag();
               new Rectangle(110, 465, orange, black, 2)
@@ -65,18 +64,18 @@
                 .pos(0, -10, CENTER, BOTTOM)
                 .addPhysics(false);
               const label = new Label().center();
-              F.on("devicemotion", (e) => {
+              F.on("deviceorientation", (e) => {
                 label.text =
-                  e.acceleration.x +
+                  decimals(e.rotation.x) +
                   "," +
-                  e.acceleration.y +
+                  decimals(e.rotation.y) +
                   "," +
-                  e.acceleration.z;
+                  decimals(e.rotation.z);
 
                 // Apply forces based on device orientation
-                const forceX = e.rotation.y * 0.1; // Apply force based on rotation along the Y-axis
-                const forceY = e.rotation.x * 0.1; // Apply force based on rotation along the X-axis
-                const forceZ = e.rotation.z * 0.1; // Apply force based on rotation along the Z-axis
+                const forceX = e.rotation.y * 3; // Apply force based on rotation along the Y-axis
+                const forceY = e.rotation.x * 3; // Apply force based on rotation along the X-axis
+                const forceZ = e.rotation.z * 3; // Apply force based on rotation along the Z-axis
 
                 cat1.force(forceX, forceY, forceZ); // Apply combined forces along X, Y, and Z axes
 
