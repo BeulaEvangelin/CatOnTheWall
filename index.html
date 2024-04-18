@@ -54,16 +54,17 @@
             size: 36,
             font: "RandomThought",
             color: "black",
-          }).pos(0, 400, CENTER, TOP, gameContainer);
+          }).pos(40, 450, CENTER, TOP, gameContainer);
 
           const introAnim1 = new Pic("introanim1.png")
-            .sca(0.4)
-            .pos(-60, 400, CENTER, TOP, gameContainer)
+            .sca(0.3)
+            .reg(CENTER)
+            .pos(-150, 410, CENTER, TOP, gameContainer)
             .animate({
-              props: { rotation: 30 },
+              props: { rotation: -10 },
               loop: true,
-              time: 0.2,
-              ease: "linear",
+              time: 0.9,
+              ease: "bounceOut",
             });
 
           const startButton = new Pic("startButton.png")
@@ -85,8 +86,20 @@
                   density: 1.5,
                 });
 
+              STYLE = { backdropColor: green };
               const data = {
-                Levels: ["Easy", "Medium", "Hard"],
+                Levels: [
+                  new Tile(
+                    [new Circle(10, red), new Label("Easy")],
+                    2,
+                    1,
+                    10,
+                    0,
+                    true
+                  ),
+                  "Medium",
+                  "Hard",
+                ],
               };
               const list = new List({
                 width: 200,
@@ -94,7 +107,13 @@
                 list: { menu: data, bloom: true, whither: true },
                 pulldown: true,
                 pulldownToggle: true,
-              }).pos(10, 10, LEFT, TOP, gameContainer);
+              })
+                .pos(10, 10, LEFT, TOP, gameContainer)
+                .change(() => {
+                  zog(list.selectedIndex);
+                });
+
+              //
 
               new Rectangle(70, 465, orange, black, 2)
                 .reg(CENTER)
