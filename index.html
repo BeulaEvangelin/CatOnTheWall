@@ -66,8 +66,8 @@
                 Levels: ["Easy", "Medium", "Hard"],
               };
               const list = new List({
-                width: 200,
-                height: 400,
+                width: 100,
+                height: 300,
                 list: { menu: data, bloom: true, whither: true },
                 pulldown: true,
                 pulldownToggle: true,
@@ -91,19 +91,17 @@
                 const forceZ = e.rotation.z * 3;
 
                 cat1.force(forceX, forceY, forceZ);
-                cat1.torque(forceX, forceY, forceZ);
+                // cat1.torque(forceX, forceY, forceZ);
+
                 // let catRotation = cat1.rot({ rotation: 0 });
                 // let catRotationL = cat1.rot({ rotation: -45 });
                 // let catRotationR = cat1.rot({ rotation: 45 });
                 // if (catRotationL || catRotationR) {
                 //   catRotation;
                 // }
-                const rect = new Rectangle(720, 1280, null, black, 1).center(
-                  gameContainer
-                );
-                if (cat1.hitTestBounds(rect)) {
+                if (cat1.hitTestBounds(gameContainer)) {
                   new Aud("angyMeow.wav").play();
-                  cat1.removeFrom(rect);
+                  cat1.removeFrom(gameContainer);
                 }
 
                 S.update();
