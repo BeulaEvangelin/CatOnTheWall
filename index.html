@@ -116,6 +116,13 @@
                 const forceZ = e.rotation.z * 3;
 
                 cat1.force(forceX, forceY, forceZ);
+
+                cat1.contact((obj) => {
+                  if (obj.type == "Border") {
+                    new Aud("angyMeow.wav").play();
+                    cat1.dispose();
+                  }
+                });
                 // cat1.torque(forceX, forceY, forceZ);
 
                 // let catRotation = cat1.rot({ rotation: 0 });
@@ -125,10 +132,10 @@
                 //   catRotation;
                 // }
 
-                if (cat1.hitTestBounds(gameContainer)) {
-                  new Aud("angyMeow.wav").play();
-                  cat1.removeFrom(gameContainer);
-                }
+                // if (cat1.hitTestBounds(gameContainer)) {
+                //   new Aud("angyMeow.wav").play();
+                //   cat1.removeFrom(gameContainer);
+                // }
 
                 S.update();
               });
