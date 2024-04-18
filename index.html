@@ -37,33 +37,42 @@
       function ready() {
         start();
         function start() {
-          const bg = new Pic("bg.png").sca(0.4).center();
-          const title = new Pic("title.png").sca(0.2).pos(0, 50, CENTER, TOP);
+          const gameContainer = new Container(720, 1280).center();
+          const bg = new Pic("bg.png").sca(0.4).center(gameContainer);
+          const title = new Pic("title.png")
+            .sca(0.2)
+            .pos(0, 50, CENTER, TOP, gameContainer);
           const wallAnimate = new Sprite({ json: "wall.json" })
             .sca(0.8)
-            .pos(0, 100, CENTER, BOTTOM)
+            .pos(0, 100, CENTER, BOTTOM, gameContainer)
             .run(6);
           const startButton = new Pic("startButton.png")
             .sca(0.2)
-            .center()
+            .center(gameContainer)
             .tap(() => {
-              startButton.removeFrom();
-              wallAnimate.removeFrom();
+              startButton.removeFrom(gameContainer);
+              wallAnimate.removeFrom(gameContainer);
               const cat1 = new Pic("cat1-1.png")
                 .sca(0.5)
                 .reg(CENTER)
-                .pos(0, 650, CENTER, BOTTOM)
+                .pos(0, 650, CENTER, BOTTOM, gameContainer)
                 .addPhysics({
                   bounciness: 0.5,
                   angular: 5,
                   density: 1.5,
-                })
-                .drag();
+                });
+              const list = new List({
+                width: 30,
+                height: 50,
+                list: ["Easy", "Medium", "Hard"],
+                pulldown: true,
+                pulldownToggle: true,
+              }).pos(10, 10, LEFT, TOP, gameContainer);
               new Rectangle(110, 465, orange, black, 2)
                 .reg(CENTER)
-                .pos(0, -10, CENTER, BOTTOM)
+                .pos(0, -10, CENTER, BOTTOM, gameContainer)
                 .addPhysics(false);
-              const label = new Label().center();
+              const label = new Label().center(gameContainer);
               F.on("deviceorientation", (e) => {
                 label.text =
                   decimals(e.rotation.x) +
@@ -79,12 +88,12 @@
 
                 cat1.force(forceX, forceY, forceZ); // Apply combined forces along X, Y, and Z axes
 
-                let catRotation = cat1.rot({ rotation: 0 });
-                let catRotationL = cat1.rot({ rotation: -45 });
-                let catRotationR = cat1.rot({ rotation: 45 });
-                if (catRotationL || catRotationR) {
-                  catRotation;
-                }
+                // let catRotation = cat1.rot({ rotation: 0 });
+                // let catRotationL = cat1.rot({ rotation: -45 });
+                // let catRotationR = cat1.rot({ rotation: 45 });
+                // if (catRotationL || catRotationR) {
+                //   catRotation;
+                // }
 
                 S.update();
               });
