@@ -98,9 +98,12 @@
                 // if (catRotationL || catRotationR) {
                 //   catRotation;
                 // }
-                if (cat1.hitTestBounds(gameContainer)) {
+                const rect = new Rectangle(720, 1280, null, black, 1).center(
+                  gameContainer
+                );
+                if (cat1.hitTestBounds(rect)) {
                   new Aud("angyMeow.wav").play();
-                  cat1.removeFrom(gameContainer);
+                  cat1.removeFrom(rect);
                 }
 
                 S.update();
