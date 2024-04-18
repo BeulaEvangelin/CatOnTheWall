@@ -57,6 +57,7 @@
           }).pos(0, 400, CENTER, TOP, gameContainer);
 
           const introAnim1 = new Pic("introanim1.png")
+            .sca(0.4)
             .pos(-60, 400, CENTER, TOP, gameContainer)
             .animate({
               props: { rotation: 30 },
@@ -72,6 +73,7 @@
               startButton.removeFrom(gameContainer);
               wallAnimate.removeFrom(gameContainer);
               instructions.removeFrom(gameContainer);
+              introAnim1.removeFrom(gameContainer);
 
               const cat1 = new Pic("cat1.png")
                 .sca(0.5)
