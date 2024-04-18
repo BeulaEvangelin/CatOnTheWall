@@ -18,6 +18,7 @@
         "cat1.png",
         "cat1-1.png",
         "cat2.png",
+        "angyMeow.wav",
         "bg.png",
         "title.png",
         "RandomThought.ttf",
@@ -97,6 +98,10 @@
                 // if (catRotationL || catRotationR) {
                 //   catRotation;
                 // }
+                if (cat1.hitTestBounds(gameContainer)) {
+                  new Aud("angyMeow.wav").play();
+                  cat1.removeFrom(gameContainer);
+                }
 
                 S.update();
               });
