@@ -86,11 +86,11 @@
                   decimals(e.rotation.z);
 
                 // Apply forces based on device orientation
-                const forceX = e.rotation.y * 3; // Apply force based on rotation along the Y-axis
-                const forceY = e.rotation.x * 3; // Apply force based on rotation along the X-axis
-                const forceZ = e.rotation.z * 3; // Apply force based on rotation along the Z-axis
+                const forceX = e.rotation.y * 3;
+                const forceY = e.rotation.x * 3;
+                const forceZ = e.rotation.z * 3;
 
-                cat1.force(forceX, forceY, forceZ); // Apply combined forces along X, Y, and Z axes
+                cat1.force(forceX, forceY, forceZ);
                 cat1.torque(forceX, forceY, forceZ);
                 // let catRotation = cat1.rot({ rotation: 0 });
                 // let catRotationL = cat1.rot({ rotation: -45 });
