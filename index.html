@@ -111,8 +111,8 @@
                   decimals(e.rotation.z);
 
                 // Apply forces based on device orientation
-                const forceX = e.rotation.y * 3;
-                const forceY = e.rotation.x * 3;
+                const forceX = e.rotation.x * 3;
+                const forceY = e.rotation.y * 3;
                 const forceZ = e.rotation.z * 3;
 
                 cat1.force(forceX, forceY, forceZ);
