@@ -87,19 +87,23 @@
                   density: 1.5,
                 });
 
+              new Rectangle(70, 465, orange, black, 2)
+                .reg(CENTER)
+                .pos(0, -10, CENTER, BOTTOM, gameContainer)
+                .addPhysics(false);
+
               const data = {
-                Levels: [
-                  new Tile(
-                    [new Circle(10, red), new Label("Easy")],
-                    2,
-                    1,
-                    10,
-                    0,
-                    true
-                  ),
-                  "Medium",
-                  "Hard",
-                ],
+                [new Tile({
+                  obj: [new Circle(10, red), new Label("Easy")],
+                  cols: 2,
+                  rows: 1,
+                  spacingH: 10,
+                  spacingV: 5,
+                  unique: true,
+                  valign: LEFT,
+                  backdropColor: green,
+                  backdropPadding: 10,
+                })]: ["Easy", "Medium", "Hard"],
               };
               const list = new List({
                 width: 200,
@@ -115,13 +119,6 @@
                   zog(list.selectedIndex);
                 });
 
-              //
-
-              new Rectangle(70, 465, orange, black, 2)
-                .reg(CENTER)
-                .pos(0, -10, CENTER, BOTTOM, gameContainer)
-                .addPhysics(false);
-
               const label = new Label().center(gameContainer);
               F.on("deviceorientation", (e) => {
                 label.text =
@@ -132,8 +129,8 @@
                   decimals(e.rotation.z);
 
                 // Apply forces based on device orientation
-                const forceX = e.rotation.y * 8;
-                const forceY = e.rotation.x * 8;
+                const forceX = e.rotation.y * 10;
+                const forceY = e.rotation.x * 10;
 
                 cat1.force(forceX, forceY);
 
