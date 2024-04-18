@@ -78,12 +78,12 @@
               title.removeFrom();
 
               const cat1 = new Pic("cat1.png")
-                .sca(0.7)
+                .sca(0.9)
                 .reg(CENTER)
                 .pos(0, 650, CENTER, BOTTOM, gameContainer)
                 .addPhysics({
                   bounciness: 0,
-                  angular: 5,
+                  angular: 3,
                   density: 1.5,
                 });
 
@@ -128,7 +128,6 @@
                   "," +
                   decimals(e.rotation.z);
 
-                // Apply forces based on device orientation
                 const forceX = e.rotation.y * 10;
                 const forceY = e.rotation.x * 10;
 
