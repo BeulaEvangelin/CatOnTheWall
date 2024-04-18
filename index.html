@@ -54,7 +54,22 @@
             size: 36,
             font: "RandomThought",
             color: "black",
-          }).pos(0, 300, CENTER, TOP, gameContainer);
+          })
+            .pos(0, 400, CENTER, TOP, gameContainer)
+            .animate({
+              props: { rotation: 30 },
+              loop: true,
+              time: 0.2,
+              ease: "linear",
+            });
+
+          const introAnim1 = new Pic("introanim1.png").pos(
+            -30,
+            400,
+            CENTER,
+            TOP,
+            gameContainer
+          );
 
           const startButton = new Pic("startButton.png")
             .sca(0.2)
