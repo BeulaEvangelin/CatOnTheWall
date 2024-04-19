@@ -18,7 +18,9 @@
         "cat1.png",
         "cat2.png",
         "menu.png",
+        "click.wav",
         "angyMeow.wav",
+        "bgM.mp3",
         "bg.png",
         "title.png",
         "RandomThought.ttf",
@@ -75,6 +77,8 @@
             .sca(0.2)
             .center(gameContainer)
             .tap(() => {
+              new Aud("click.wav").play();
+              new Aud("bgM.wav").play();
               location.href = "level1.html";
               startButton.removeFrom();
               wallAnimate.removeFrom();

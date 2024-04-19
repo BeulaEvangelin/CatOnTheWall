@@ -37,6 +37,7 @@
       });
 
       function ready() {
+        new Aud("bgM.wav").play();
         const gameContainer = new Container(720, 1280).center();
         const bg = new Pic("bg.png").sca(0.4).center(gameContainer);
         const cat1 = new Pic("cat1.png")
@@ -58,7 +59,7 @@
           .pos(0, 20, RIGHT, TOP, gameContainer)
           .sca(0.7);
         const timerBG = new Rectangle(150, 80, black).center(timer);
-        let timerText = new Label({
+        const timerText = new Label({
           text: "5",
           size: 38,
           font: "RandomThought",
