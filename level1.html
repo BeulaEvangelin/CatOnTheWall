@@ -181,7 +181,6 @@
           cat1.contact((obj) => {
             if (obj.type == "Border") {
               new Aud("angyMeow.wav").play();
-              cat1.dispose();
               gameOver2();
             }
           });
@@ -220,7 +219,6 @@
               zgo("level1.html");
             });
           }
-
           S.update();
         });
       } // end ready
