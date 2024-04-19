@@ -156,7 +156,7 @@
                 .change(() => {
                   zog(list.selectedIndex);
                   if (list.selectedIndex == 1) {
-                    gameContainer.removeAllChildren();
+                    cat1.dispose();
                     level1();
                   } else if (list.selectedIndex == 2) {
                     gameContainer.removeAllChildren();
@@ -175,117 +175,84 @@
                   cat1.dispose();
                 }
               });
-              cat1.contact((obj) => {
-                if (obj.type == "Border") {
-                  new Aud("angyMeow.wav").play();
-                  cat1.dispose();
-                }
-              });
+
+              // function level2() {
+              //   zogb("level1 is running");
+              //   const bg = new Pic("bg.png").sca(0.4).center(gameContainer);
+              //   const cat2 = new Pic("cat2.png")
+              //     .sca(0.9)
+              //     .reg(CENTER)
+              //     .pos(0, 650, CENTER, BOTTOM, gameContainer)
+              //     .addPhysics({
+              //       bounciness: 0,
+              //       angular: 0.5,
+              //       density: 2,
+              //     });
+
+              //   new Rectangle(30, 465, orange, black, 2)
+              //     .reg(CENTER)
+              //     .pos(0, -10, CENTER, BOTTOM, gameContainer)
+              //     .addPhysics(false);
+
+              //   const list = new List({
+              //     width: 200,
+              //     height: 200,
+              //     list: {
+              //       menu: {
+              //         id0: {
+              //           obj: new Tile({
+              //             obj: [
+              //               new Pic("menu.png").sca(0.4),
+              //               new Label({
+              //                 text: "Levels  ",
+              //                 size: 36,
+              //                 font: "RandomThought",
+              //                 color: black,
+              //               }),
+              //             ],
+              //             cols: 2,
+              //             rows: 1,
+              //             spacingH: 2,
+              //             spacingV: 0,
+              //             unique: true,
+              //             valign: CENTER,
+              //             backdropColor: white,
+              //             backdropPaddingv: 40,
+              //             backdropPaddingH: 30,
+              //           }),
+              //           list: {
+              //             id1: { obj: "Easy" },
+              //             id2: { obj: "Medium" },
+              //             id3: { obj: "Hard" },
+              //           },
+              //         },
+              //       },
+              //       bloom: true,
+              //       whither: true,
+              //     },
+              //     align: LEFT,
+              //     backgroundColor: yellow,
+              //     rollBackgroundColor: orange,
+              //     pulldown: true,
+              //     pulldownToggle: true,
+              //   })
+              //     .pos(20, 60, LEFT, TOP, gameContainer)
+              //     .change(() => {
+              //       zog(list.selectedIndex);
+              //     });
+
+              //   const forceX = e.rotation.y * 30;
+              //   const forceY = e.rotation.x * 30;
+
+              //   cat2.force(forceX, forceY);
+
+              //   cat2.contact((obj) => {
+              //     if (obj.type == "Border") {
+              //       new Aud("angyMeow.wav").play();
+              //       cat1.dispose();
+              //     }
+              //   });
             }
-
-            function level2() {
-              zogb("level1 is running");
-              const bg = new Pic("bg.png").sca(0.4).center(gameContainer);
-              const cat2 = new Pic("cat2.png")
-                .sca(0.9)
-                .reg(CENTER)
-                .pos(0, 650, CENTER, BOTTOM, gameContainer)
-                .addPhysics({
-                  bounciness: 0,
-                  angular: 0.5,
-                  density: 2,
-                });
-
-              new Rectangle(30, 465, orange, black, 2)
-                .reg(CENTER)
-                .pos(0, -10, CENTER, BOTTOM, gameContainer)
-                .addPhysics(false);
-
-              const list = new List({
-                width: 200,
-                height: 200,
-                list: {
-                  menu: {
-                    id0: {
-                      obj: new Tile({
-                        obj: [
-                          new Pic("menu.png").sca(0.4),
-                          new Label({
-                            text: "Levels  ",
-                            size: 36,
-                            font: "RandomThought",
-                            color: black,
-                          }),
-                        ],
-                        cols: 2,
-                        rows: 1,
-                        spacingH: 2,
-                        spacingV: 0,
-                        unique: true,
-                        valign: CENTER,
-                        backdropColor: white,
-                        backdropPaddingv: 40,
-                        backdropPaddingH: 30,
-                      }),
-                      list: {
-                        id1: { obj: "Easy" },
-                        id2: { obj: "Medium" },
-                        id3: { obj: "Hard" },
-                      },
-                    },
-                  },
-                  bloom: true,
-                  whither: true,
-                },
-                align: LEFT,
-                backgroundColor: yellow,
-                rollBackgroundColor: orange,
-                pulldown: true,
-                pulldownToggle: true,
-              })
-                .pos(20, 60, LEFT, TOP, gameContainer)
-                .change(() => {
-                  zog(list.selectedIndex);
-                });
-
-              const forceX = e.rotation.y * 30;
-              const forceY = e.rotation.x * 30;
-
-              cat2.force(forceX, forceY);
-
-              cat2.contact((obj) => {
-                if (obj.type == "Border") {
-                  new Aud("angyMeow.wav").play();
-                  cat1.dispose();
-                }
-              });
-              cat1.contact((obj) => {
-                if (obj.type == "Border") {
-                  new Aud("angyMeow.wav").play();
-                  cat1.dispose();
-                }
-              });
-            }
-
-            // const cat2 = new Pic("cat1.png")
-            //   .sca(0.9)
-            //   .reg(CENTER)
-            //   .pos(0, 650, CENTER, BOTTOM, gameContainer)
-            //   .addPhysics({
-            //     bounciness: 0,
-            //     angular: 1,
-            //     density: 1.5,
-            //   });
-
-            // new Rectangle(20, 465, orange, black, 2)
-            //   .reg(CENTER)
-            //   .pos(0, -10, CENTER, BOTTOM, gameContainer)
-            //   .addPhysics(false);
-            // const forceX2 = e.rotation.y * 20;
-            // const forceY2 = e.rotation.x * 20;
-
-            // cat1.force(forceX2, forceY2);
-            S.update();
           });
         }
       } // end ready
