@@ -75,97 +75,12 @@
             .sca(0.2)
             .center(gameContainer)
             .tap(() => {
+              location.href = "level1.html";
               startButton.removeFrom();
               wallAnimate.removeFrom();
               instructions.removeFrom();
               introAnim1.removeFrom();
               title.removeFrom();
-
-              const cat1 = new Pic("cat1.png")
-                .sca(0.9)
-                .reg(CENTER)
-                .pos(0, 650, CENTER, BOTTOM, gameContainer)
-                .addPhysics({
-                  bounciness: 0,
-                  angular: 1,
-                  density: 1.5,
-                });
-
-              new Rectangle(30, 465, red, black, 2)
-                .reg(CENTER)
-                .pos(0, -10, CENTER, BOTTOM, gameContainer)
-                .addPhysics(false);
-
-              const list = new List({
-                width: 200,
-                height: 200,
-                list: {
-                  menu: {
-                    id0: {
-                      obj: new Tile({
-                        obj: [
-                          new Pic("menu.png").sca(0.4),
-                          new Label({
-                            text: "Levels  ",
-                            size: 36,
-                            font: "RandomThought",
-                            color: black,
-                          }),
-                        ],
-                        cols: 2,
-                        rows: 1,
-                        spacingH: 2,
-                        spacingV: 0,
-                        unique: true,
-                        valign: CENTER,
-                        backdropColor: white,
-                        backdropPaddingv: 40,
-                        backdropPaddingH: 30,
-                      }),
-                      list: {
-                        id1: { obj: "Easy" },
-                        id2: { obj: "Medium" },
-                        id3: { obj: "Hard" },
-                      },
-                    },
-                  },
-                  bloom: true,
-                  whither: true,
-                },
-                align: LEFT,
-                backgroundColor: yellow,
-                rollBackgroundColor: orange,
-                pulldown: true,
-                pulldownToggle: true,
-              })
-                .pos(0, 60, LEFT, TOP, gameContainer)
-                .change(() => {
-                  zog(list.selectedIndex);
-                });
-
-              const label = new Label().center(gameContainer);
-              F.on("deviceorientation", (e) => {
-                label.text =
-                  decimals(e.rotation.x) +
-                  "," +
-                  decimals(e.rotation.y) +
-                  "," +
-                  decimals(e.rotation.z);
-
-                const forceX = e.rotation.y * forces[level];
-                const forceY = e.rotation.x * forces[level];
-
-                cat1.force(forceX, forceY);
-
-                cat1.contact((obj) => {
-                  if (obj.type == "Border") {
-                    new Aud("angyMeow.wav").play();
-                    cat1.dispose();
-                  }
-                });
-
-                S.update();
-              });
             });
         }
       } // end ready
