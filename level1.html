@@ -39,6 +39,7 @@
 
       function ready() {
         new Aud("bgM.mp3").play();
+        const label = new Label().center();
         const gameContainer = new Container(720, 1280).center();
         const bg = new Pic("bg.png").sca(0.4).center(gameContainer);
         const cat1 = new Pic("cat1.png")
@@ -164,7 +165,6 @@
             }
           });
 
-        const label = new Label().center(gameContainer);
         const orientation = F.on("deviceorientation", (e) => {
           label.text =
             decimals(e.rotation.x) +
