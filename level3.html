@@ -49,8 +49,8 @@
           .pos(0, 650, CENTER, BOTTOM, gameContainer)
           .addPhysics({
             bounciness: 0,
-            angular: 1,
-            density: 1.5,
+            angular: 0,
+            density: 2.5,
           });
 
         new Rectangle(20, 465, red, black, 2)
@@ -174,8 +174,8 @@
             "," +
             decimals(e.rotation.z);
 
-          const forceX = e.rotation.y * 30;
-          const forceY = e.rotation.x * 30;
+          const forceX = e.rotation.y * 40;
+          const forceY = e.rotation.x * 40;
 
           cat1.force(forceX, forceY);
 
