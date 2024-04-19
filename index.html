@@ -19,7 +19,6 @@
         "cat2.png",
         "menu.png",
         "angyMeow.wav",
-        "click.wav",
         "bg.png",
         "title.png",
         "RandomThought.ttf",
@@ -38,62 +37,50 @@
       });
 
       function ready() {
+        let level = 0;
+        const forces = [20, 30, 40];
         start();
         function start() {
-          const label = new Label().center();
-          F.on("deviceorientation", (e) => {
-            label.text =
-              decimals(e.rotation.x) +
-              "," +
-              decimals(e.rotation.y) +
-              "," +
-              decimals(e.rotation.z);
+          const gameContainer = new Container(720, 1280).center();
+          const bg = new Pic("bg.png").sca(0.4).center(gameContainer);
 
-            const gameContainer = new Container(720, 1280).center();
-            const bg = new Pic("bg.png").sca(0.4).center();
+          const title = new Pic("title.png")
+            .sca(0.2)
+            .pos(0, 50, CENTER, TOP, gameContainer);
 
-            const title = new Pic("title.png")
-              .sca(0.2)
-              .pos(0, 50, CENTER, TOP, gameContainer);
+          const wallAnimate = new Sprite({ json: "wall.json" })
+            .sca(0.8)
+            .pos(0, 100, CENTER, BOTTOM, gameContainer)
+            .run(6);
 
-            const wallAnimate = new Sprite({ json: "wall.json" })
-              .sca(0.8)
-              .pos(0, 100, CENTER, BOTTOM, gameContainer)
-              .run(6);
+          const instructions = new Label({
+            text: "TiLt To BaLaNcE",
+            size: 36,
+            font: "RandomThought",
+            color: "black",
+          }).pos(40, 450, CENTER, TOP, gameContainer);
 
-            const instructions = new Label({
-              text: "TiLt To BaLaNcE",
-              size: 36,
-              font: "RandomThought",
-              color: "black",
-            }).pos(40, 450, CENTER, TOP, gameContainer);
+          const introAnim1 = new Pic("introanim1.png")
+            .sca(0.3)
+            .reg(CENTER)
+            .pos(-150, 410, CENTER, TOP, gameContainer)
+            .animate({
+              props: { rotation: -10 },
+              loop: true,
+              time: 0.9,
+              ease: "bounceOut",
+            });
 
-            const introAnim1 = new Pic("introanim1.png")
-              .sca(0.3)
-              .reg(CENTER)
-              .pos(-150, 410, CENTER, TOP, gameContainer)
-              .animate({
-                props: { rotation: -10 },
-                loop: true,
-                time: 0.9,
-                ease: "bounceOut",
-              });
+          const startButton = new Pic("startButton.png")
+            .sca(0.2)
+            .center(gameContainer)
+            .tap(() => {
+              startButton.removeFrom();
+              wallAnimate.removeFrom();
+              instructions.removeFrom();
+              introAnim1.removeFrom();
+              title.removeFrom();
 
-            const startButton = new Pic("startButton.png")
-              .sca(0.2)
-              .center(gameContainer)
-              .tap(() => {
-                startButton.removeFrom();
-                wallAnimate.removeFrom();
-                instructions.removeFrom();
-                introAnim1.removeFrom();
-                title.removeFrom();
-                new Aud("click.wav").play();
-                level1();
-              });
-
-            function level1() {
-              zogr("level1 is running");
               const cat1 = new Pic("cat1.png")
                 .sca(0.9)
                 .reg(CENTER)
@@ -151,108 +138,61 @@
                 pulldown: true,
                 pulldownToggle: true,
               })
-                .pos(20, 60, LEFT, TOP, gameContainer)
+                .pos(0, 60, LEFT, TOP, gameContainer)
                 .change(() => {
                   zog(list.selectedIndex);
-                  if (list.selectedIndex == 1) {
-                    // gameContainer.removeAllChildren();
-                    // level1();
-                  } else if (list.selectedIndex == 2) {
-                    // gameContainer.removeAllChildren();
-                    // level2();
+                });
+
+              const label = new Label().center(gameContainer);
+              F.on("deviceorientation", (e) => {
+                label.text =
+                  decimals(e.rotation.x) +
+                  "," +
+                  decimals(e.rotation.y) +
+                  "," +
+                  decimals(e.rotation.z);
+
+                const forceX = e.rotation.y * forces[level];
+                const forceY = e.rotation.x * forces[level];
+
+                cat1.force(forceX, forceY);
+
+                cat1.contact((obj) => {
+                  if (obj.type == "Border") {
+                    new Aud("angyMeow.wav").play();
+                    cat1.dispose();
                   }
                 });
 
-              const forceX = e.rotation.y * 20;
-              const forceY = e.rotation.x * 20;
+                const cat2 = new Pic("cat1.png")
+                  .sca(0.9)
+                  .reg(CENTER)
+                  .pos(0, 650, CENTER, BOTTOM, gameContainer)
+                  .addPhysics({
+                    bounciness: 0,
+                    angular: 1,
+                    density: 1.5,
+                  });
 
-              cat1.force(forceX, forceY);
+                new Rectangle(20, 465, orange, black, 2)
+                  .reg(CENTER)
+                  .pos(0, -10, CENTER, BOTTOM, gameContainer)
+                  .addPhysics(false);
+                const forceX2 = e.rotation.y * 20;
+                const forceY2 = e.rotation.x * 20;
 
-              cat1.contact((obj) => {
-                if (obj.type == "Border") {
-                  new Aud("angyMeow.wav").play();
-                  cat1.dispose();
-                }
+                cat1.force(forceX2, forceY2);
+
+                cat1.contact((obj) => {
+                  if (obj.type == "Border") {
+                    new Aud("angyMeow.wav").play();
+                    cat1.dispose();
+                  }
+                });
+
+                S.update();
               });
-
-              // function level2() {
-              //   zogb("level1 is running");
-              //   const bg = new Pic("bg.png").sca(0.4).center(gameContainer);
-              //   const cat2 = new Pic("cat2.png")
-              //     .sca(0.9)
-              //     .reg(CENTER)
-              //     .pos(0, 650, CENTER, BOTTOM, gameContainer)
-              //     .addPhysics({
-              //       bounciness: 0,
-              //       angular: 0.5,
-              //       density: 2,
-              //     });
-
-              //   new Rectangle(30, 465, orange, black, 2)
-              //     .reg(CENTER)
-              //     .pos(0, -10, CENTER, BOTTOM, gameContainer)
-              //     .addPhysics(false);
-
-              //   const list = new List({
-              //     width: 200,
-              //     height: 200,
-              //     list: {
-              //       menu: {
-              //         id0: {
-              //           obj: new Tile({
-              //             obj: [
-              //               new Pic("menu.png").sca(0.4),
-              //               new Label({
-              //                 text: "Levels  ",
-              //                 size: 36,
-              //                 font: "RandomThought",
-              //                 color: black,
-              //               }),
-              //             ],
-              //             cols: 2,
-              //             rows: 1,
-              //             spacingH: 2,
-              //             spacingV: 0,
-              //             unique: true,
-              //             valign: CENTER,
-              //             backdropColor: white,
-              //             backdropPaddingv: 40,
-              //             backdropPaddingH: 30,
-              //           }),
-              //           list: {
-              //             id1: { obj: "Easy" },
-              //             id2: { obj: "Medium" },
-              //             id3: { obj: "Hard" },
-              //           },
-              //         },
-              //       },
-              //       bloom: true,
-              //       whither: true,
-              //     },
-              //     align: LEFT,
-              //     backgroundColor: yellow,
-              //     rollBackgroundColor: orange,
-              //     pulldown: true,
-              //     pulldownToggle: true,
-              //   })
-              //     .pos(20, 60, LEFT, TOP, gameContainer)
-              //     .change(() => {
-              //       zog(list.selectedIndex);
-              //     });
-
-              //   const forceX = e.rotation.y * 30;
-              //   const forceY = e.rotation.x * 30;
-
-              //   cat2.force(forceX, forceY);
-
-              //   cat2.contact((obj) => {
-              //     if (obj.type == "Border") {
-              //       new Aud("angyMeow.wav").play();
-              //       cat1.dispose();
-              //     }
-              //   });
-            }
-          });
+            });
         }
       } // end ready
     </script>
