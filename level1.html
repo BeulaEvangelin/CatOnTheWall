@@ -58,7 +58,7 @@
           .pos(0, 20, RIGHT, TOP, gameContainer)
           .sca(0.7);
         const timerBG = new Rectangle(150, 80, black).center(timer);
-        const timerText = new Label({
+        let timerText = new Label({
           text: "5",
           size: 38,
           font: "RandomThought",
