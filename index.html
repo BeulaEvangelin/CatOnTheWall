@@ -164,32 +164,6 @@
                   }
                 });
 
-                const cat2 = new Pic("cat1.png")
-                  .sca(0.9)
-                  .reg(CENTER)
-                  .pos(0, 650, CENTER, BOTTOM, gameContainer)
-                  .addPhysics({
-                    bounciness: 0,
-                    angular: 1,
-                    density: 1.5,
-                  });
-
-                new Rectangle(20, 465, orange, black, 2)
-                  .reg(CENTER)
-                  .pos(0, -10, CENTER, BOTTOM, gameContainer)
-                  .addPhysics(false);
-                const forceX2 = e.rotation.y * 20;
-                const forceY2 = e.rotation.x * 20;
-
-                cat1.force(forceX2, forceY2);
-
-                cat1.contact((obj) => {
-                  if (obj.type == "Border") {
-                    new Aud("angyMeow.wav").play();
-                    cat1.dispose();
-                  }
-                });
-
                 S.update();
               });
             });
