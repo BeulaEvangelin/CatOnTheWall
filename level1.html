@@ -179,36 +179,6 @@
             if (obj.type == "Border") {
               new Aud("angyMeow.wav").play();
               cat1.dispose();
-              timerText.text == "0";
-              const LosePane = new Rectangle({
-                width: 400,
-                height: 400,
-                color: white,
-                borderColor: red,
-                borderWidth: 8,
-                corner: 20,
-              }).pos(0, 380, CENTER, BOTTOM);
-              const youWon = new Label({
-                text: "You Lost :(",
-                size: 72,
-                font: "RandomThought",
-                color: orange,
-              }).pos(0, 600, CENTER, BOTTOM);
-              const retry = new Label({
-                text: "Retry",
-                size: 40,
-                font: "RandomThought",
-                color: "white",
-              }).pos(0, 450, CENTER, BOTTOM);
-              const retryBtn = new Button(200, 80, retry, "black").pos(
-                0,
-                450,
-                CENTER,
-                BOTTOM
-              );
-              retry.tap(() => {
-                location.href = "level1.html";
-              });
             }
           });
 
