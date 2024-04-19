@@ -18,7 +18,9 @@
         "cat1.png",
         "cat2.png",
         "menu.png",
+        "click.wav",
         "angyMeow.wav",
+        "bgM.mp3",
         "bg.png",
         "title.png",
         "RandomThought.ttf",
@@ -37,6 +39,7 @@
       });
 
       function ready() {
+        new Aud("bgM.mp3").play();
         const gameContainer = new Container(720, 1280).center();
         const bg = new Pic("bg.png").sca(0.4).center(gameContainer);
         const cat1 = new Pic("cat2.png")
