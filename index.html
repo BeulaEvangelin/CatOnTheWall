@@ -78,6 +78,7 @@
             .center(gameContainer)
             .tap(() => {
               new Aud("click.wav").play();
+              new Aud("bgM.mp3").play();
               location.href = "level1.html";
               startButton.removeFrom();
               wallAnimate.removeFrom();
