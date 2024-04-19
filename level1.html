@@ -164,7 +164,7 @@
           });
 
         const label = new Label().center(gameContainer);
-        F.on("deviceorientation", (e) => {
+        const orientation = F.on("deviceorientation", (e) => {
           label.text =
             decimals(e.rotation.x) +
             "," +
@@ -185,6 +185,9 @@
             }
           });
           function gameOver2() {
+            timerInt.clear();
+            F.off("deviceorientation", orientation);
+            cat1.physics.dispose();
             timerText.text == "0";
             const LosePane = new Rectangle({
               width: 400,
